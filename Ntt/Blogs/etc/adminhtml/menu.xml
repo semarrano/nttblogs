@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Menu/etc/menu.xsd">
+    <menu>
+        <add id="Ntt_Blogs::main_menu" title="Ntt Blogs" module="Ntt_Blogs" sortOrder="10" action="ntt_blogs/index/index" resource="Ntt_Blogs::main_menu"/>
+    </menu>
+</config>

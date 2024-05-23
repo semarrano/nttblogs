@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">ntt_blogs_post_listing.ntt_blogs_post_listing_data_source</item>
+            <item name="deps" xsi:type="string">ntt_blogs_post_listing.ntt_blogs_post_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">ntt_blogs_post_listing_columns</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="ntt_blogs/post/new"/>
+                <class>primary</class>
+                <label translate="true">Añadir Post</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="ntt_blogs_post_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">ntt_blogs_post_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="ntt_blogs_post_listing_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id">
+            <settings>
+                <filter>text</filter>
+                <label>ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="nombre">
+            <settings>
+                <filter>text</filter>
+                <label>Nombre</label>
+            </settings>
+        </column>
+        <column name="titulo">
+            <settings>
+                <label>Título</label>
+            </settings>
+        </column>
+        <column name="contenido">
+            <settings>
+                <label>Contenido del Post</label>
+            </settings>
+        </column>
+        <column name="estado" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options>
+                    <option name="active" xsi:type="array">
+                        <item name="value" xsi:type="string">1</item>
+                        <item name="label" xsi:type="string" translate="true">Activo</item>
+                    </option>
+                    <option name="inactive" xsi:type="array">
+                        <item name="value" xsi:type="string">0</item>
+                        <item name="label" xsi:type="string" translate="true">Inactivo</item>
+                    </option>
+                </options>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="hora_de_creacion">
+            <settings>
+                <label>Creación del post</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

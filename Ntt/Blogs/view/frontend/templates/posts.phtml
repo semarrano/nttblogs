@@ -1,0 +1,26 @@
+<?php
+$posts = $block->getPosts();
+$mediaUrl = $block->getViewFileUrl('Ntt_Blogs::images/');
+?>
+
+<div class="nttblogs-posts">
+    <h1>Posts de Blog</h1>
+    <?php if (!empty($posts)): ?>
+        <ul>
+            <?php foreach ($posts as $post): ?>
+                <li>
+                    <h2><?php echo $post->getTitulo(); ?></h2>
+                    <p><?php echo $post->getContenido(); ?></p>
+                    <?php if ($post->getImagen()): ?>
+                        <p><img src="<?php echo $mediaUrl .'/'. $post->getImagen(); ?>" alt="<?php echo $post->getTitulo(); ?>"></p>
+                    <?php endif; ?>
+                    <p><strong>Hora de Creación del post:</strong> <?php echo $post->getHoraDeCreacion(); ?></p>
+                    <p><strong>Hora de la Última Actualización:</strong> <?php echo $post->getHoraDeLaUltimaActualizacion(); ?></p>
+                    <p><strong>Estado:</strong> <?php echo $post->getEstado() ? 'Activo' : 'Inactivo'; ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>No hay posts disponibles.</p>
+    <?php endif; ?>
+</div>
